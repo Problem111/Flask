@@ -46,7 +46,7 @@ def edit(id):
 # Function to get a random picture from the static folder
 @app.route('/picture/<unique_id>')
 def picture(unique_id):
-    images_dir = 'C:/Users/Kaliber/PycharmProjects/PizzariaPandas6/MiniprojektFlask/static/images'
+    images_dir = 'static/images'
     image_files = os.listdir(images_dir)
     random_image = random.choice(image_files)
     image_path = os.path.join(images_dir, random_image)
