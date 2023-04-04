@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+    <script>
+
+        function updateQuantity(itemId, newQuantity) {
+            // Send a POST request to your Flask application to update the quantity of the item in the database
+            fetch('/update_quantity', {
+                method: 'POST',
+                body: JSON.stringify({
+                    'item_id': itemId,
+                    'new_quantity': newQuantity
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Update the quantity value in the HTML template
+                const quantityInput = document.querySelector(`input[value="${itemId}"]`);
+                if (quantityInput) {
+                    quantityInput.value = data.quantity;
+                }
+            })
+            .catch(error => console.error(error));
+        }
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shopping Cart</title>
+
+    <style>
+    body {
+        background-image: url("https://img.freepik.com/free-photo/restaurant-interior_1127-3394.jpg?w=1380&t=st=1680090265~exp=1680090865~hmac=31ed2512173ba5e4fa082d49387ba03265e52885c0c81c3213b056df93edfb13");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 100vh;
+      }
+
+               h1 {
+        color: yellow; /* sets the text color to yellow */
+        text-shadow: 2px 2px black; /* creates a black outline around the text */
+        font-size: 75px;
+      }
+
+          .flashes {
+            margin-bottom: 20px;
+          }
+
+          .flash-message {
+            color: rgb(250, 7, 7);
+            font-family: 'Domine', serif;
+            font-size: 25px;
+            text-align-last: center;
+            font-weight: bold
+          }
+           #total_cost {
+                position: absolute;
+                top: 145px;
+                left: 400px;
+                font-size: 16px;
+    }
+        #continue-shopping {
+            position: absolute;
+            top: 150px;
+            left: 100px;
+            font-size: 16px;
+         }
+        .cart-item {
+
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 1px 3px #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cart-item img {
+            height: 100px;
+            margin-right: 20px;
+
+        }
+        
+        .cart-item .details {
+
+            flex-grow: 1;
+        }
+        h1 {
+        display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cart-item .quantity {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cart-item .quantity button {
+            background-color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .cart-item {
+          background-color: rgba(255, 255, 255, 0.8);
+          margin: 20px auto;
+          padding: 20px;
+          max-width: 600px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          box-shadow: 0px 1px 3px #ccc;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .cart-item .quantity input {
+            width: 50px;
+            text-align: center;
+            font-size: 16px;
+            border: none;
+            background-color: #fff;
+            margin: 0px 10px;
+        }
+        
+        .cart-item .quantity input:focus {
+            outline: none;
+        }
+        
+        .cart-item .delete-btn {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .cart-item .delete-btn:hover {
+            background-color: #c82333;
+        }
+        
+        .cart-item .price {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .cart-item .title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+  #continue-shopping {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #3e8e41;
+  }
+
+  a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    color: black;
+    cursor: pointer;
+  }
+
+  a:hover {
+    background-color: #ddd;
+  }
+button[type="submit"] {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+#total_cost {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+#total_cost:hover {
+  background-color: #3e8e41;
+}
+
+    </style>
+
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+
+
+    {% set total_cost = 0 %}
+    {% for item in items %}
+    <div class="cart-item">
+        <img src="{{ url_for('picture', unique_id=index) }}" alt="Random image" style="width: 25%;">
+        <div class="details">
+            <div class="title">{{ item.name }}</div>
+            <div class="price">${{ item.price }}</div>
+        </div>
+        <div class="quantity">
+
+            <button onclick="updateQuantity('{{ item.id }}', -1);"></button>
+            <input type="number" value="{{ item.quantity }}" min="1" max="10" onchange="location.reload(); updateQuantity('{{ item.id }}', this.value)">
+            <button onclick="updateQuantity('{{ item.id }}', 1); location.reload()"></button>
+
+
+        </div>
+        <form action="{{ url_for('delete_item', id=item.id) }}" method="post">
+        <button class="delete-btn" onclick="deleteItem('{{ item.id }}')">Delete</button>
+            </form>
+    </div>
+
+
+    {% endfor %}
+
+    {% for item in items %}
+        {{ i }}
+    {% endfor %}
+    <div id="total_cost" style="background-color: rgba(255, 255, 255, 0.2); padding: 10px;">
+  <p style="color: yellow; margin: 0;">Total cost: ${{ a }}</p>
+</div>
+ <div id="continue-shopping">
+     <form action="{{ url_for('place_order') }}" method="POST">
+         <button class="btn btn-outline-dark mt-auto" type="submit">Place order</button>
+     </form>
+    <button><a href="/menu">Continue shopping</a></button>
+    </div>
+

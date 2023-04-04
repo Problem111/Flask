@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+
+      .flashes {
+    margin-bottom: 20px;
+  }
+
+  .flash-message {
+    color: rgb(250, 7, 7);
+    font-family: 'Domine', serif;
+    font-size: 25px;
+    text-align-last: center;
+    font-weight: bold
+  }
+
+
+      body {
+        background-image: url("https://images2.alphacoders.com/862/862730.jpg");
+        background-position: center;
+        background-size: cover;
+      }
+
+      .card {
+        flex-direction: unset; !important
+      }
+
+      .container {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        margin-top: 50px;
+        padding: 20px;
+
+      }
+
+      .pizza-img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        margin-top: 20px;
+      }
+
+      #menu-btn {
+        margin-right: 10px;
+      }
+
+      #contact-btn {
+        margin-right: 10px;
+      }
+
+      #logout-btn {
+        margin-right: 10px;
+      }
+
+      .container {
+        color: red;
+        text-shadow: 1px 1px black;
+      }
+
+      .btn-primary, .btn-danger {
+        background-color: green;
+        border-color: green;
+      }
+    </style>
+  </head>
+  <body>
+     {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="flashes">
+        {% for message in messages %}
+          <div class="flash-message">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+    <div class="container text-center" style="color: yellow;">
+  <h1>Welcome to our Pizzeria</h1>
+  <p>We serve delicious pizzas made with the freshest ingredients.</p>
+  <a href="{{ url_for('view_cart') }}" class="btn btn-primary">Go to cart</a>
+        <button class="btn btn-primary mr-2" onclick="window.location.href='/contact'">Contact</button>
+        <button class="btn btn-primary mr-2" onclick="window.location.href='/home'">Home</button>
+        <button class="btn btn-primary mr-2" onclick="window.location.href='/logout'">Logout</button>
+         {% if session["username"] == "admin" %}
+        <button class="btn btn-primary mr-2" onclick="window.location.href='/add_data1'">Add pizza (Admin privelege)</button>
+        {% endif %}
+</div>
+  <div class="container">
+    <div class="jumobotron">
+
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+    </div>
+        {% for index, row in enumerate(row_data) %}
+<div class="col">
+    <div class="card h-100 pizza-card">
+        <img src="{{ url_for('picture', unique_id=index) }}" alt="Random image" style="width: 25%;">
+
+        <div class="card-body">
+            <h5 class="card-title">{{ row[column_names.index('Name')] }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ row[column_names.index('Size')] }}</h6>
+            <p class="card-text">Toppings: {{ row[column_names.index('Toppings')] }}</p>
+        </div>
+        <div class="card-footer d-flex align-items-center justify-content-between">
+            <div class="price-text">
+                <p class="card-text mb-0">Price: ${{ row[column_names.index('Price')] }}</p>
+            </div>
+
+            <form action="{{ url_for('add_to_cart') }}" method="POST">
+                <input type="hidden" name="name" value="{{ row[column_names.index('Name')] }}">
+                <input type="hidden" name="price" value="{{ row[column_names.index('Price')] }}">
+                <input type="hidden" name="size" value="{{ row[column_names.index('Size')] }}">
+                <input type="hidden" name="toppings" value="{{ row[column_names.index('Toppings')] }}">
+                <button class="btn btn-outline-dark mt-auto" type="submit">Add to cart</button>
+                </form>
+                {% if session["username"] == "admin" %}
+                <form>
+                <a href="{{ url_for('edit', id=row[column_names.index('id')]) }}" class="btn btn-outline-dark mt-auto">Edit pizza</a>
+                </form>
+                {% endif %}
+
+            {% if session["username"] == "admin" %}
+            <form action="{{ url_for('delete_data', index=index) }}" method="POST">
+                <button id=knapp class="btn btn-outline-danger mt-auto" type="submit">Remove from menu (Admin privilege)</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endfor %}
+    </div>
+</div>
+  </body>
+</html>

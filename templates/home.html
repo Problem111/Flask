@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% if 'username' in session %}
+    <p>Welcome, {{ session.username }}!</p>
+    {% endif %}
+
+    {% if 'admin' in session %}
+    <p>Welcome, Admin! Bla bla bla</p>
+    {% endif %}
+    <title>Welcome to our Pizzeria</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+      body {
+        background-image: url("https://images2.alphacoders.com/862/862730.jpg");
+        background-position: center;
+        background-size: cover;
+      }
+
+      .container {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        margin-top: 50px;
+        padding: 20px;
+
+      }
+
+      .pizza-img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        margin-top: 20px;
+      }
+
+      #menu-btn {
+        margin-right: 10px;
+      }
+
+      #contact-btn {
+        margin-right: 10px;
+      }
+
+      #logout-btn {
+        margin-right: 10px;
+      }
+
+      .container {
+        color: yellow;
+        text-shadow: 1px 1px black;
+      }
+
+      .btn-primary, .btn-danger {
+        background-color: green;
+        border-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container text-center" style="color: yellow;">
+  <h1>Welcome to our Pizzeria</h1>
+  <p>We serve delicious pizzas made with the freshest ingredients.</p>
+  <button id="menu-btn" class="btn btn-primary" onclick="window.location.href='/menu'">Menu</button>
+  <button id="contact-btn" class="btn btn-primary" onclick="window.location.href='/contact'">Contact</button>
+  <button id="logout-btn" class="btn btn-danger" onclick="window.location.href='/logout'">Logout</button>
+</div>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+<div class ="container-fluid">
+    <nav class="navbar navbar-dark bg-dark" style="justify-content: center;">
+      <button class="btn btn-outline-success me-2" type="button"
+          onclick="location.href='http://127.0.0.1:5000/home'">Home</button>
+    </nav>
+    </div>
+    
+<h1>Contact info</h1>
+<p> City : Kista </p>
+<p> Adress : Isafjordsgatan 32A </p>
+<p> Phone : +09612374812 </p>
+<body onload="initMap()">
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}"></script>
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 59.40588693627015, lng: 17.94784723649793},
+                zoom: 15
+            });
+            var marker = new google.maps.Marker({
+                position: {lat: 59.40588693627015, lng: 17.94784723649793},
+                map: map,
+                title: 'Your Location'
+            });
+        }
+    </script>
+</body>
+{% endblock %}

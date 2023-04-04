@@ -1,0 +1,27 @@
+th {
+    color: rgb(223, 193, 23);
+    font-family: 'Domine', serif;
+    font-size: 25px;
+    text-align: center !important;
+    font-weight: bold
+
+}
+#cart1 {
+    color: rgb(223, 193, 23);
+    font-family: 'Domine', serif;
+    font-size: 25px;
+    text-align-last: center;
+    font-weight: bold
+
+}
+
+td {
+  color: rgb(223, 193, 23);
+    font-family: 'Domine', serif;
+    font-size: 25px;
+    text-align: center;
+}
+
+.container {
+  text-align: center !important;
+}

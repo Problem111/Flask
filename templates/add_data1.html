@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<style>
+		body {
+			background-image: url('https://img.freepik.com/free-photo/wooden-planks-with-blurred-restaurant-background_1253-56.jpg?w=1060&t=st=1680036786~exp=1680037386~hmac=b46473020841ded7e05447c8d29608663bf0a3eec47b8a6035956c8092944a91');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		.label-field-wrapper {
+			background-color: white;
+			padding: 10px;
+			margin-bottom: 10px;
+			border-radius: 5px;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 5px;
+			font-weight: bold;
+		}
+		.add-data-heading {
+			font-size: 4em;
+			text-align: center;
+			-webkit-text-stroke: 1px black;
+			-moz-text-stroke: 1px black;
+			-ms-text-stroke: 1px black;
+			text-stroke: 1px black;
+		}
+	</style>
+
+	<h1 class="add-data-heading">Lägg till pizza</h1>
+	<form method="POST" action="/add-data">
+		<div class="label-field-wrapper">
+			<label for="name">Namn:</label>
+			<input type="text" name="name" required>
+		</div>
+		<div class="label-field-wrapper">
+			<label for="price">Pris:</label>
+			<input type="text" name="price" pattern="[0-9]+" required title="Only numbers allowed in price field">
+		</div>
+		<div class="label-field-wrapper">
+			<label for="size">Storlek:</label>
+			<input type="text" name="size" required>
+		</div>
+		<div class="label-field-wrapper">
+			<label for="toppings">Toppings:</label>
+			<input type="text" name="toppings" required>
+		</div>
+		<!-- add more input fields for each column in your CSV file -->
+		<input type="submit" value="Submit">
+	</form>
+{% endblock %}

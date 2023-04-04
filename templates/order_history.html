@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Order History</h1>
+
+
+    <button><a href="/menu">Continue shopping</a></button>
+
+  {% if order_history_list %}
+    <ul>
+      {% for order_history in order_history_list %}
+        <p>
+          <p><strong>Order ID:</strong> {{ order_history.id }}</p>
+          <p><strong>Total Price:</strong> ${{ order_history.total_price }}</p>
+          <ul>
+            {% for item in order_history.cart_items %}
+              <p>
+                <p><strong>Name:</strong> {{ item.name }}</p>
+                <p><strong>Price:</strong> ${{ item.price }}</p>
+                <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+              </p>
+            {% endfor %}
+          </ul>
+        </p>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>{{ message }}</p>
+  {% endif %}
+
+
+{% endblock %}

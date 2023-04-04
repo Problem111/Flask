@@ -1,0 +1,265 @@
+@media (min-width: 1025px) {
+.h-custom {
+height: 100vh !important;
+}
+}
+
+h1 {
+    color: rgb(223, 193, 23);
+    text-align: center;
+    font-family: 'Domine', sans-serif;
+  }
+th {
+    color: yellow !important;
+    font-family: 'Domine', sans-serif;
+}
+#cart1 {
+    color: yellow !important;
+    font-family: 'Domine', sans-serif;
+}
+
+td {
+    color: yellow !important;
+    font-family: 'Domine', sans-serif;
+}
+  
+p {
+  color: rgb(223, 193, 23);
+    font-family: 'Domine', serif;
+    font-size: 25px;
+    text-align-last: center;
+    font-weight: bold
+    
+}
+
+
+#login-info {
+    color:rgb(223, 193, 23)
+}
+
+a {
+  color: rgb(223, 193, 23);
+  font-family: 'Domine', serif;
+  font-size: 25px;
+  text-align-last: center;
+  font-weight: bold;
+}
+
+.center-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.center-links a {
+  text-align: center;
+}
+
+
+.navbar {
+    display: flex;
+    background-color: black !important;
+}
+  
+.navbar button {
+    margin: 0 10px;
+}
+
+#map {
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 40%;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .btn-outline-success:hover {
+    color: #fff;
+    background-color: #ffcb01;
+    border-color: #ffcb01;
+  }
+
+  .btn {
+    color:#ffcb01
+  }
+
+  .btn-outline-success {
+    color: #fdcd0f;
+    border-color: #fdcd0f;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 10cm;
+    margin: 0 auto;
+  }
+  
+  .form-outline {
+    width: 100%;
+  }
+  
+  .form-label {
+    width: 100%;
+  }
+  
+  .btn-primary {
+    width: 100%;
+  }
+  
+  .text-center {
+    margin-top: 1rem;
+    background-color: white;
+    border: 1px solid black;
+    width: 20%;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 20px;
+			text-align: center;
+  }
+  
+  .flashes {
+    margin-bottom: 20px;
+  }
+  
+  .flash-message {
+    color: rgb(250, 7, 7);
+    font-family: 'Domine', serif;
+    font-size: 25px;
+    text-align-last: center;
+    font-weight: bold
+  }
+
+
+
+
+
+  .image-container {
+    position: relative;
+    width: 100%; 
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; 
+  }
+  
+  .image-container:hover img {
+    opacity: 1;
+  }
+
+  #headlights {
+    position: absolute;
+    top: calc(100% - 275px); /* Adjust the value as needed */
+    left: 92%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%px; /* Adjust the value as needed */
+    margin-bottom: 100px;
+  }
+
+  #homepage {
+    position: absolute;
+    top: calc(100% - 890px); /* Adjust the value as needed */
+    left: 7.5%;
+    transform: translateX(-50%);
+    z-index: 1;
+    font-size: 30px;
+    color: #ffcb01;
+    text-align: center;
+    font-family: 'Domine', serif;
+  }
+
+
+  a:hover {
+    text-decoration: none;
+}
+
+#headlights-2 {
+  position: absolute;
+  top: calc(100% - 125px); /* Adjust the value as needed */
+  left: 92%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%px; /* Adjust the value as needed */
+}
+
+#homepage-2 {
+  position: absolute;
+  top: calc(100% - 890px + 0px);
+  left: 7.5%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-size: 30px;
+  color: #ffcb01;
+  text-align: center;
+  font-family: 'Domine', serif;
+}
+
+#shop {
+  position: absolute;
+  top: calc(100% - 950px + 0px);
+  left: 7.5%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-size: 30px;
+  color: #ffcb01;
+  text-align: center;
+  font-family: 'Domine', serif;
+}
+
+#login-info {
+  width: 500px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f7f7f7;
+}
+
+/* Style the form labels */
+label {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Style the form input fields */
+input[type="text"], input[type="password"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+/* Style the form submit button */
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Change the button color when hovering over it */
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
